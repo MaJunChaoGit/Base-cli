@@ -20,6 +20,7 @@ var webpackConfig = {
     filename: '[name].js',
     sourcePrefix: '',
     chunkFilename: '[name].js',
+    globalObject: 'this',
     publicPath: isProd
       ? './'
       : '/'
@@ -82,6 +83,10 @@ var webpackConfig = {
           limit: 10000,
           name: path.posix.join('static', '[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.worker\.js$/,
+        loader: 'worker-loader'
       }
     ]
   },
